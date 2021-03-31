@@ -21,7 +21,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 var dotenv = __importStar(require("dotenv"));
 dotenv.config();
@@ -44,7 +43,7 @@ middleware_1.default.get("/songs", function (req, res) {
         res.json(table.rows);
     });
 });
-middleware_1.default.listen((_a = process.env.LOCAL_PORT) !== null && _a !== void 0 ? _a : process.env.PORT, function () {
-    var _a;
-    console.log((_a = "Server running on port " + process.env.LOCAL_PORT) !== null && _a !== void 0 ? _a : process.env.PORT);
+var port = process.env.NODE_ENV === "production" ? process.env.PORT : process.env.LOCAL_PORT;
+middleware_1.default.listen(port, function () {
+    console.log("Server running on port " + port);
 });

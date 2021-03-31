@@ -23,8 +23,9 @@ server.get("/songs", (req, res) => {
     })
 })
 
+const port = process.env.NODE_ENV === "production" ? process.env.PORT : process.env.LOCAL_PORT
 
-server.listen(process.env.LOCAL_PORT ?? process.env.PORT, () => {
-    console.log("Server running on port " + process.env.LOCAL_PORT ?? process.env.PORT);
+server.listen(port, () => {
+    console.log("Server running on port " + port);
 })
 
