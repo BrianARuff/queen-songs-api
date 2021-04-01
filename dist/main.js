@@ -40,7 +40,7 @@ middleware_1.default.get("/songs", function (req, res) {
         if (err) {
             return res.json(err);
         }
-        res.json(table.rows.map(function (row) { return row.album; }));
+        res.json(table.rows);
     });
 });
 var port = process.env.NODE_ENV === "production" ? process.env.PORT : process.env.LOCAL_PORT;
