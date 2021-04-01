@@ -15,7 +15,7 @@ server.post("/songs", (req, res) => {
 
 
 server.get("/songs", (req, res) => {
-    db.query(`SELECT * FROM songs ORDER BY id ASC;`, (err, table) => {
+    db.query(`SELECT * FROM songs ORDER BY id ASC;`, [], (err, table) => {
         if (err) {
             return res.json(err);
         }

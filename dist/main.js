@@ -36,7 +36,7 @@ middleware_1.default.post("/songs", function (req, res) {
     });
 });
 middleware_1.default.get("/songs", function (req, res) {
-    postgres_1.default.query("SELECT * FROM songs ORDER BY id ASC;", function (err, table) {
+    postgres_1.default.query("SELECT * FROM songs ORDER BY id ASC;", [], function (err, table) {
         if (err) {
             return res.json(err);
         }

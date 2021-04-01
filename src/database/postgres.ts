@@ -18,4 +18,12 @@ db = new Client({
 }
 db.connect();
 
-export default db;
+interface Table {
+    rows: {}
+}
+
+interface Database {
+    query: (query: string, queryArgs: any[], response: <T>(err: T, table: Table) => {} | undefined) => {}
+}
+
+export default db as Database;
