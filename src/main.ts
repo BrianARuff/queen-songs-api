@@ -19,7 +19,7 @@ server.get("/songs", (req, res) => {
         if (err) {
             return res.json(err);
         }
-        res.json(table.rows);
+        res.json(table.rows.map(row => row.album));
     })
 })
 

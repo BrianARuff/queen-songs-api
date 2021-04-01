@@ -18,12 +18,12 @@ db = new Client({
 }
 db.connect();
 
-interface Table {
-    rows: {id: number, title: string, lyrics: string, author: string, genre: string, album: string}[]
+interface Table<T> {
+    rows: {id: T, title: T, lyrics: T, author: T, genre: T, album: T}[]
 }
 
-interface Database {
-    query: (query: string, queryArgs: any[], response: <T>(err: T, table: Table) => {} | undefined) => {}
+interface Database<T> {
+    query: (query: T, queryArgs: T[], response: <K>(err: T, table: Table<K>) => {} | undefined) => {}
 }
 
-export default db as Database;
+export default db as Database<any>;
