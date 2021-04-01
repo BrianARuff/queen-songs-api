@@ -19,7 +19,7 @@ db = new Client({
 db.connect();
 
 interface Table {
-    rows: {}
+    rows: {id: number, title: string, lyrics: string, author: string, genre: string, album: string}[]
 }
 
 interface Database {
