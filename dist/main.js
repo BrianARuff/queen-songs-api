@@ -43,6 +43,15 @@ middleware_1.default.get("/songs", function (req, res) {
         res.json(table.rows);
     });
 });
+middleware_1.default.get("/songs/:id", function (req, res) {
+    var id = req.params.id;
+    postgres_1.default.query("SELECT * FROM songs WHERE id = $1", [id], function (err, table) {
+        if (err) {
+            return res.json(err);
+        }
+        res.json(table.rows[0]);
+    });
+});
 var port = process.env.NODE_ENV === "production" ? process.env.PORT : process.env.LOCAL_PORT;
 middleware_1.default.listen(port, function () {
     console.log("Server running on port " + port);

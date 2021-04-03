@@ -23,6 +23,16 @@ server.get("/songs", (req, res) => {
     })
 })
 
+server.get("/songs/:id", (req, res) => {
+    const { id } = req.params;
+    db.query(`SELECT * FROM songs WHERE id = $1`, [id], (err, table) => {
+        if (err) {
+            return res.json(err);
+        }
+        res.json(table.rows[0]);
+    })
+})
+
 const port = process.env.NODE_ENV === "production" ? process.env.PORT : process.env.LOCAL_PORT
 
 server.listen(port, () => {

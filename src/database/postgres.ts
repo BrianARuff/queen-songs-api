@@ -1,5 +1,7 @@
 import { Client } from "pg";
+
 let db = undefined;
+
 if (process.env.NODE_ENV === "production") {
     db = new Client({
         connectionString: process.env.DATABASE_URL,
